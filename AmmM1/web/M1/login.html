@@ -12,24 +12,33 @@ and open the template in the editor.
         <meta name="author" content="Sara Flore">
     </head>
     <body>
+        
         <!--Inserisco la sezione di navigazione -->
         <nav>
             <a href="descrizione.html">Home</a>
             <a href="cliente.html">Cliente</a>
-            <a href="venditore.html">Venditore</a>
+            <a href="venditore.html">Area Venditore</a>
         </nav>
+        
+        <h1>Effettua l'accesso al sito</h1>
         
         <!--Inserisco il form di login -->
         <form action="login.html" method="post">
-            
+            <div>
             <label for="user">Username</label>
             <input type="text" name="user"
             id="user" value="nome utente" />
-            <br />
+            </div>
+            <div>
             <label for="pswd">Password</label>
             <input type="password" name="pswd” "
             id="pswd" value="oscurato" />
-            
+            </div>
+             <!--Pulsanti per inviare e resettare -->
+            <div>
+                <input type="submit" value="Invia"/>
+                <input type="reset" value="Reimposta"/>
+            </div>
         </form>
     </body>
 </html>

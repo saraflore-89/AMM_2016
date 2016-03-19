@@ -6,11 +6,66 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Area venditori</title>
+        <title>Area venditore</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Aggiungo keywords, breve descrizione e autore -->
+        <meta name="keywords" content="shop, online, sell, makeup">
+        <meta name="description" content="Area venditore">
+        <meta name="author" content="Sara Flore">
     </head>
     <body>
-        <div>TODO write content</div>
+        <!--Inserisco la sezione di navigazione -->
+        <nav>
+            <a href="descrizione.html">Home</a>
+            <a href="login.html">Login</a>
+        </nav>
+            
+        <h1>Vendita di un prodotto</h1>
+        <p>Compila questo form con tutte le informazioni sul prodotto che vuoi vendere.</p>
+        
+        <!--Form per l'inserimento delle informazioni -->
+        <form method="POST">   
+        
+        <!-- Nome del prodotto-->
+        <div>
+            <label for="NomeProdotto">Nome prodotto</label>
+            <input type="text" name="NomeProdotto" id="NomeProdotto" />
+        </div>
+        <!--Url immagine descrittiva del prodotto -->
+        <div>
+            <label for="Url">URL immagine prodotto</label>
+            <input type="url" name="Url" id="Url" />
+        </div>
+        <!--Area per la descrizione del prodotto -->
+        <div>
+            <label for="Descrizione">Descrizione</label>
+            <textarea name="Descrizione" id="Descrizione"
+                  rows="10" cols="40">Descrizione del prodotto</textarea>
+        </div>
+        <!--Prezzo prodotto -->
+        <div> 
+            <label for="Prezzo">Prezzo</label>
+            <input type="number" name="Prezzo" id="Prezzo" />
+        </div>
+        <!-- Quantità disponibile -->
+        <div>
+        <label for="Quantità">Quantità</label>
+        <select size="3" name="Quantità" id="Quantità">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        </div>
+        
+        <!--Pulsanti per inviare e resettare -->
+        <div>
+            <input type="submit" value="Invia"/>
+            <input type="reset" value="Reimposta"/>
+        </div>
+        </form>
     </body>
 </html>
