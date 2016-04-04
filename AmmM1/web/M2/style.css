@@ -8,3 +8,15 @@ and open the template in the editor.
     Author     : Sara Flore
 */
 
+#body
+{
+    background-color: lightpink;
+    font-family: "Open Sans", Arial, sans-serif;
+    color: black;
+}
+
+#h1,h2,h3
+{
+    color: darkmagenta;
+    
+}
