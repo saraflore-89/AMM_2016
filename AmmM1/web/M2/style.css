@@ -26,6 +26,7 @@ h1
     font-size: 40px;
     font-weight:bolder;
     color:darkmagenta;
+    text-align:center;
     
 }
 
@@ -51,10 +52,10 @@ a:link
 /*Link visitato*/
 a:visited
 {
-    color: darkmagenta;
+    color: indigo;
     test-decoration:none;
 }
-/*Link passando il mouse sopra*/
+/*Link quando il puntatore è sopra*/
 a:hover
 {
     color: blue;
@@ -68,3 +69,49 @@ a:activate
     test-decoration: underline;
 }
 
+/*Visualizzazione campi di input*/
+input:focus
+{
+    background-color: peachpuff;
+}
+
+/*Proprietà per l'intestazione della tabella'*/
+th
+{
+    font-style: bold;
+    font-size:20px;
+    color: mediumvioletred;
+    background-color: pink;
+}
+
+td
+{
+    font-style: italic;
+    font-size:17px;
+    border-style: solid;
+    border-color: hotpink;
+}
+/*Utilizzo un colore di sfondo diverso per righe pari e dispari*/
+tr:nth-child(even)
+{
+    background-color: peachpuff;
+}
+
+tr:nth-child(odd)
+{
+    background-color: bisque;
+}
+/*Dimensionamento righe e colonne*/
+td, th
+{
+    padding:20px;
+    text-align: center;
+}
+
+table
+{
+    margin:auto;
+    border-collapse:collapse;
+    border-style: solid;
+    border-color: hotpink;
+}
