@@ -8,15 +8,63 @@ and open the template in the editor.
     Author     : Sara Flore
 */
 
-#body
+body
 {
-    background-color: lightpink;
-    font-family: "Open Sans", Arial, sans-serif;
-    color: black;
+    background-color: mistyrose;
+    font-family: "Times New Roman", Georgia, serif; 
 }
 
-#h1,h2,h3
+p
 {
-    color: darkmagenta;
+    font-size:18px;
+    font-style:italic;
+    color:black;
+}
+
+h1
+{
+    font-size: 40px;
+    font-weight:bolder;
+    color:darkmagenta;
     
 }
+
+h2
+{
+    font-size: 25px;
+    font-weight:bolder;
+    color: darkorchid;
+}
+
+h3
+{
+    font-size: 20px;
+    font-weight:bolder;
+    color: deeppink;
+}
+/*Link non visitato*/
+a:link
+{
+    color: navy;
+    test-decoration:none;
+}
+/*Link visitato*/
+a:visited
+{
+    color: darkmagenta;
+    test-decoration:none;
+}
+/*Link passando il mouse sopra*/
+a:hover
+{
+    color: blue;
+    test-decoration: underline;
+    background-color:highlight;
+}
+/*Link quando viene cliccato*/
+a:activate
+{
+    color: blue;
+    test-decoration: underline;
+}
+
