@@ -88,8 +88,6 @@ td
 {
     font-style: italic;
     font-size:17px;
-    border-style: solid;
-    border-color: hotpink;
 }
 /*Utilizzo un colore di sfondo diverso per righe pari e dispari*/
 tr:nth-child(even)
