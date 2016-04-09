@@ -17,15 +17,24 @@ and open the template in the editor.
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
-        <!--Inserisco la sezione di navigazione -->
-        <nav>
-            <a href="descrizione.html">Home</a>
-            <a href="login.html">Login</a>
-        </nav>
-            
-        <h1>Vendita di un prodotto</h1>
-        <p>Compila questo form con tutte le informazioni sul prodotto che vuoi vendere.</p>
+        <div class="page">
         
+        
+        <div class="header">
+        <h1>Vendita di un prodotto</h1>
+        <p class="sub">Compila questo form con tutte le informazioni sul prodotto che vuoi vendere.</p>
+        </div>
+            
+        <!--Inserisco la sezione di navigazione -->
+        <div class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="content">
         <!--Form per l'inserimento delle informazioni -->
         <form method="POST">   
         
@@ -62,5 +71,11 @@ and open the template in the editor.
             <input class="button" type="submit" value="Invia"/>
         </div>
         </form>
+        </div>
+        
+        <div class="footer">
+            
+        </div>
+        </div>
     </body>
 </html>

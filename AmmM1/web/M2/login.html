@@ -17,17 +17,24 @@ and open the template in the editor.
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
+        <div class="page">
         
-        <!--Inserisco la sezione di navigazione -->
-        <nav>
-            <a href="descrizione.html">Home</a>
-            <a href="cliente.html">Cliente</a>
-            <a href="venditore.html">Area Venditore</a>
-        </nav>
         
+        <div class="header">
         <h1>Effettua l'accesso al sito</h1>
-        
+        </div>
+        <!--Inserisco la sezione di navigazione -->
+        <div class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Home</a></li>
+                <li><a href="cliente.html">Cliente</a></li>
+                <li><a href="venditore.html">Area Venditore</a></li>
+            </ul>
+        </nav>
+        </div>
         <!--Inserisco il form di login -->
+        <div class="content">
         <form action="login.html" method="post">
             <div>
             <label for="user">Username</label>
@@ -45,5 +52,11 @@ and open the template in the editor.
                 <input class="button" type="submit" value="Invia"/>
             </div>
         </form>
+        </div>
+        
+        <div class="footer">
+            
+        </div>
+        </div>
     </body>
 </html>

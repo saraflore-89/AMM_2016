@@ -18,12 +18,21 @@ and open the template in the editor.
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
+        <div class="page">
         <!--Titolo principale e descrizione sito -->
+        <div class="header">
         <h1>La Bottega di Flo</h1>
-        <p>In questo sito è possibile vendere ed acquistare cosmetici di vari marchi e di varie 
+        <p class="sub">In questo sito è possibile vendere ed acquistare cosmetici di vari marchi e di varie 
         fasce di prezzo.</p>
+        </div>
         <!--Inserisco la sezione di navigazione -->
-        <nav><a href="login.html">Login</a></nav>
+        <div class="sidebar">
+        <nav>
+            <ul> 
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        
         <!--Sommario -->
         <ul>
             <li><a href="#cliente">Cosa puoi acquistare</a></li>
@@ -36,7 +45,9 @@ and open the template in the editor.
                 </ul>
             </li>
         </ul>
+        </div>
         <!-- Informazioni per clienti, venditori e sulla tipologia dei prodotti -->
+        <div class="content">
         <h2 id="cliente">Cosa puoi acquistare</h2>
         <p>In questo sito potrai trovare tutto ciò che ti serve per un make up completo, con 
         i migliori prodotti per il viso, per gli occhi e per le labbra.
@@ -59,6 +70,11 @@ and open the template in the editor.
         <h3 id="labbra">Labbra</h3>
         <p>Vasta scelta di matite labbra, rossetti dai vari finish, lip gloss, tinte a lunga durata 
             e trattamenti labbra.</p>
+        </div>
         
+        <div class="footer">
+            
+        </div>
+        </div>
     </body>
 </html>
