@@ -14,7 +14,6 @@ body
     background-color: mistyrose;
     font-family: "Times New Roman", Georgia, serif; 
 }
-
 p
 {
     font-size:18px;
@@ -22,12 +21,11 @@ p
     text-align:justify;
     color:black;
 }
-
 .sub
 {
-    font-size:22px;
+    font-size:24px;
     text-align:center;
-    
+    font-weight: bold;
 }
 h1
 {
@@ -35,16 +33,13 @@ h1
     font-weight:bolder;
     color:darkmagenta;
     text-align:center;
-    
 }
-
 h2
 {
     font-size: 25px;
     font-weight:bolder;
     color: darkorchid;
 }
-
 h3
 {
     font-size: 20px;
@@ -56,43 +51,33 @@ h3
 a:link
 {
     color: navy;
-    test-decoration:none;
 }
 /*Link visitato*/
 a:visited
 {
     color: indigo;
-    test-decoration:none;
 }
 /*Link quando il puntatore è sopra*/
 a:hover
 {
     color: blue;
-    test-decoration: underline;
     background-color:highlight;
 }
-/*Link quando viene cliccato*/
-a:activate
-{
-    color: blue;
-    test-decoration: underline;
-}
 
-/*Proprietà per l'intestazione della tabella'*/
+/*Proprietà per l'intestazione e le colonne della tabella'*/
 th
 {
-    font-style: bold;
+    font-weight: bold;
     font-size:20px;
     color: mediumvioletred;
     background-color: pink;
 }
-
 td
 {
     font-style: italic;
     font-size:17px;
 }
-/*Utilizzo un colore di sfondo diverso per righe pari e dispari della tabella*/
+/*Proprietà che permette di colorare con sfondo diverso per righe pari e dispari della tabella*/
 tr:nth-child(even)
 {
     background-color: peachpuff;
@@ -115,6 +100,11 @@ table
     border-collapse:collapse;
     border-style: solid;
     border-color: hotpink;
+}
+/*Crea una scrollbar per la tabella, in caso di riduzione delle dimensioni della pagina*/
+#tab 
+{
+    overflow-x:auto;
 }
 
 /*Visualizzazione campi di input e textarea dei form*/
@@ -159,8 +149,17 @@ textarea:focus, input:focus
     height: 50px;
     width: 120px;
 }
-
+/*Visualizzazione dei pulsanti con il focus*/
+.button:focus 
+{
+    border: 2px solid;
+    border-color: mediumorchid;
+    background-color: bisque;
+    color:darkmagenta;
+}
 /*Layout responsive*/
+
+/*Media query per larghezze maggiori o uguali a 1024px*/
 @media screen and (min-width: 1024px)
 {
     .header
@@ -198,7 +197,7 @@ textarea:focus, input:focus
         font-size:20px;
     }  
 }
-
+/*Media query per larghezze comprese tra 480px e 1024px*/
 @media screen and (min-width: 480px)
               and (max-width: 1024px)
 {
@@ -237,7 +236,7 @@ textarea:focus, input:focus
         font-size:18px;
     }                
 }
-
+/*Media query per larghezze minori o uguali a 480px*/
 @media screen and (max-width: 480px)
 {
    .page
