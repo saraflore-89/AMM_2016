@@ -19,12 +19,14 @@ p
 {
     font-size:18px;
     font-style:italic;
+    text-align:justify;
     color:black;
 }
 
 .sub
 {
     font-size:22px;
+    text-align:center;
     
 }
 h1
@@ -124,10 +126,10 @@ form
 input 
 {
     height: 30px;
-    width: 30%;
 }
 input, textarea 
 {
+    width:60%;
     border: 2px solid;
     border-color:hotpink;
     border-radius: 4px;
@@ -164,11 +166,9 @@ textarea:focus, input:focus
     .header
     {
         width: auto;
-        height: 120px;
         padding:30px;
         background-color: hotpink;
         text-align:center;
-       
     }
     .footer
     {
@@ -178,29 +178,25 @@ textarea:focus, input:focus
     }
     .page
     {
-        width:auto;
+        width: auto;
         padding:50px;
     }
     .content 
     {
-        float:end;
         padding:50px;
+        margin-left:150px;
     }
     body
     {
         width:auto;
-        padding:30px;
-        
     }
     .sidebar 
     {
         float:left;
-        height:2000px;
-        padding:30px;
-        padding-right:50px;
+        width:150px;
+        padding-top:30px;
         font-size:20px;
-    }
-    
+    }  
 }
 
 @media screen and (min-width: 480px)
@@ -209,11 +205,9 @@ textarea:focus, input:focus
     .header
     {
         width: auto;
-        height: 120px;
         padding:30px;
         background-color: hotpink;
         text-align:center;
-       
     }
     .footer
     {
@@ -228,25 +222,20 @@ textarea:focus, input:focus
     }
     .content 
     {
-        float:end;
+        margin-left:150px;
         padding:50px;
     }
     body
     {
-        width:auto;
-        padding:30px;
-        
+        width:auto;   
     }
     .sidebar
     {
         float:left;
-        height:2000px;
-        padding:30px;
-        padding-right:50px;
-        font-size:20px;
-    }
-    
-                  
+        width:150px;
+        padding-top:30px;
+        font-size:18px;
+    }                
 }
 
 @media screen and (max-width: 480px)
