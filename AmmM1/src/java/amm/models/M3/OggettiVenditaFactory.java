@@ -107,6 +107,11 @@ public class OggettiVenditaFactory {
         }
         return null;
     }
+    
+    public void aggiungiOgg(OggettiVendita newOggetto)
+    {
+        this.listaOggetti.add(newOggetto);
+    }
 
 }
 

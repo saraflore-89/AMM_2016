@@ -19,7 +19,7 @@ public class OggettiVendita {
     int idOggetto;
     int idVenditoreOgg;
     
-    OggettiVendita(){
+    public OggettiVendita(){
     
     }
     

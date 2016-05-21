@@ -1,0 +1,247 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4-apr-2016, 15.23.34
+    Author     : Sara Flore
+*/
+
+/*Proprietà del corpo, dei paragrafi e dei titoli*/
+body
+{
+    background-color: mistyrose;
+    font-family: "Times New Roman", Georgia, serif; 
+}
+p
+{
+    font-size:18px;
+    font-style:italic;
+    text-align:justify;
+    color:black;
+}
+.sub
+{
+    font-size:24px;
+    text-align:center;
+    font-weight: bold;
+}
+h1
+{
+    font-size: 40px;
+    font-weight:bolder;
+    color:darkmagenta;
+    text-align:center;
+}
+h2
+{
+    font-size: 25px;
+    font-weight:bolder;
+    color: darkorchid;
+}
+h3
+{
+    font-size: 20px;
+    font-weight:bolder;
+    color: deeppink;
+}
+
+/*Link non visitato*/
+a:link
+{
+    color: navy;
+}
+/*Link visitato*/
+a:visited
+{
+    color: indigo;
+}
+/*Link quando il puntatore è sopra*/
+a:hover
+{
+    color: blue;
+    background-color:highlight;
+}
+
+/*Proprietà per l'intestazione e le colonne della tabella'*/
+th
+{
+    font-weight: bold;
+    font-size:20px;
+    color: mediumvioletred;
+    background-color: pink;
+}
+td
+{
+    font-style: italic;
+    font-size:17px;
+}
+/*Proprietà che permette di colorare con sfondo diverso per righe pari e dispari della tabella*/
+tr:nth-child(even)
+{
+    background-color: peachpuff;
+}
+
+tr:nth-child(odd)
+{
+    background-color: bisque;
+}
+/*Dimensionamento righe e colonne della tabella*/
+td, th
+{
+    padding:20px;
+    text-align: center;
+}
+
+table
+{
+    margin:auto;
+    border-collapse:collapse;
+    border-style: solid;
+    border-color: hotpink;
+}
+/*Crea una scrollbar per la tabella, in caso di riduzione delle dimensioni della pagina*/
+#tab 
+{
+    overflow-x:auto;
+}
+
+/*Visualizzazione campi di input e textarea dei form*/
+form 
+{
+    padding-left:100px;
+    font-size: 18px;
+}
+input 
+{
+    height: 30px;
+}
+input, textarea 
+{
+    width:60%;
+    border: 2px solid;
+    border-color:hotpink;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+/*Posizionamento delle labels e dei campi di input*/
+label::after, label::before
+{
+    content:'\A';
+    white-space:pre;
+}
+/*Visualizzazione campi di input e textarea con il focus*/
+textarea:focus, input:focus  
+{
+    border: 2px solid;
+    border-color: mediumorchid;
+    background-color: bisque;
+}
+/*Visualizzazione dei pulsanti*/
+.button
+{
+    background-color: darkmagenta;
+    color: white;
+    font-size:16px;
+    padding:10px 18px;
+    margin: 30px 3px;
+    height: 50px;
+    width: 120px;
+}
+/*Visualizzazione dei pulsanti con il focus*/
+.button:focus 
+{
+    border: 2px solid;
+    border-color: mediumorchid;
+    background-color: bisque;
+    color:darkmagenta;
+}
+/*Layout responsive*/
+
+/*Media query per larghezze maggiori o uguali a 1024px*/
+@media screen and (min-width: 1024px)
+{
+    .header
+    {
+        width: auto;
+        padding:30px;
+        background-color: hotpink;
+        text-align:center;
+    }
+    .footer
+    {
+        width: auto;
+        height: 100px;
+        background-color: hotpink;
+    }
+    .page
+    {
+        width: auto;
+        padding:50px;
+    }
+    .content 
+    {
+        padding:50px;
+        margin-left:150px;
+    }
+    body
+    {
+        width:auto;
+    }
+    .sidebar 
+    {
+        float:left;
+        width:150px;
+        padding-top:30px;
+        font-size:20px;
+    }  
+}
+/*Media query per larghezze comprese tra 480px e 1024px*/
+@media screen and (min-width: 480px)
+              and (max-width: 1024px)
+{
+    .header
+    {
+        width: auto;
+        padding:30px;
+        background-color: hotpink;
+        text-align:center;
+    }
+    .footer
+    {
+        width: auto;
+        height: 100px;
+        background-color: hotpink;
+    }
+    .page
+    {
+        width:auto;
+        padding:50px;
+    }
+    .content 
+    {
+        margin-left:150px;
+        padding:50px;
+    }
+    body
+    {
+        width:auto;   
+    }
+    .sidebar
+    {
+        float:left;
+        width:150px;
+        padding-top:30px;
+        font-size:18px;
+    }                
+}
+/*Media query per larghezze minori o uguali a 480px*/
+@media screen and (max-width: 480px)
+{
+   .page
+    {
+        width:auto;
+        padding:50px;
+    }
+}
