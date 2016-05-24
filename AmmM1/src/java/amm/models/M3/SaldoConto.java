@@ -12,7 +12,7 @@ package amm.models.M3;
 public class SaldoConto {
     //Atributi
     public int idConto;
-    int saldo;
+    Double saldo;
     
     SaldoConto(){
     
@@ -28,12 +28,12 @@ public class SaldoConto {
         this.idConto = idConto;
     }
     
-    public int getSaldo(){
+    public Double getSaldo(){
         
         return saldo;
     }
     
-    public void setSaldo(int saldo){
+    public void setSaldo(Double saldo){
         
         this.saldo = saldo;
     }

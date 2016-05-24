@@ -15,6 +15,7 @@ public class Clienti {
     String pswCliente;
     public int idCliente;
     int idContoC;
+    
 
 
     Clienti(){

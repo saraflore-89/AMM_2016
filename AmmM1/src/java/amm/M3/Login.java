@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To /change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -10,9 +10,13 @@ import amm.models.M3.ClientiFactory;
 import amm.models.M3.Clienti;
 import amm.models.M3.Venditori;
 import amm.models.M3.VenditoriFactory;
+import amm.models.M3.SaldoContoFactory;
+import amm.models.M3.SaldoConto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +28,27 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sara
  */
-@WebServlet(name = "Login", urlPatterns = {"/login.html"})
+@WebServlet(name = "Login", urlPatterns = {"/login.html"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
+    
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    
+    @Override 
+    public void init(){
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        OggettiVenditaFactory.getInstance().setConnectionString(dbConnection);
+        ClientiFactory.getInstance().setConnectionString(dbConnection);
+        VenditoriFactory.getInstance().setConnectionString(dbConnection);
+        SaldoContoFactory.getInstance().setConnectionString(dbConnection);
+        
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,14 +71,12 @@ public class Login extends HttpServlet {
             String username = request.getParameter("user");
             String password = request.getParameter("pswd");
 
-            ArrayList<Clienti> listaClienti = ClientiFactory.getInstance().getClientiList();
-            for (Clienti u : listaClienti) {
-                if (u.getUserCliente().equals(username)
-                        && u.getPswCliente().equals(password)) 
+            Clienti c = ClientiFactory.getInstance().getClienti(username, password);
+            
+                if (username.equals(c.getUserCliente()) && password.equals(c.getPswCliente())) 
                 {
                     session.setAttribute("loggedIn", true);
-                    session.setAttribute("id", u.getIdCliente());
-                    request.setAttribute("listaOggetti", OggettiVenditaFactory.getInstance().getOggettiList());
+                    session.setAttribute("id", c.getIdCliente());
 
                     session.setAttribute("logVenditore", false);
                     session.setAttribute("logCliente", true);
@@ -63,26 +84,25 @@ public class Login extends HttpServlet {
 
                 }
 
-            }
+            
 
-            ArrayList<Venditori> listaVenditori = VenditoriFactory.getInstance().getVenditoriList();
-            for (Venditori u : listaVenditori) {
-                if (u.getUserVenditore().equals(username)
-                        && u.getPswVenditore().equals(password)) {
+            Venditori v = VenditoriFactory.getInstance().getVenditore(username, password);
+            
+                if (username.equals(v.getUserVenditore()) && password.equals(v.getPswVenditore()))
+                {
                     session.setAttribute("loggedIn", true);
-                    session.setAttribute("id", u.getIdVenditore());
-                    request.setAttribute("listaOggetti", OggettiVenditaFactory.getInstance().getOggettiList());
-
+                    session.setAttribute("id", v.getIdVenditore());
+                    
                     session.setAttribute("logVenditore", true);
                     session.setAttribute("logCliente", false);
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);
 
                 }
-
-            }
-            request.setAttribute("Errore", true);
+        
+                request.setAttribute("Errore", true);
+              
+        
         }
-
         request.getRequestDispatcher("login.jsp").forward(request, response);
 
     }

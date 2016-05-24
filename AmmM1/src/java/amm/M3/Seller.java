@@ -54,12 +54,11 @@ public class Seller extends HttpServlet {
                     Random rand = new Random();
                     nuovoProdotto.setIdOggetto(rand.nextInt(50));
                     
-                    OggettiVenditaFactory.getInstance().aggiungiOgg(nuovoProdotto);
-                    session.setAttribute("listaOggetti", OggettiVenditaFactory.getInstance().getOggettiList());
+//                    OggettiVenditaFactory.getInstance().aggiungiOgg(nuovoProdotto);
+//                    session.setAttribute("listaOggetti", OggettiVenditaFactory.getInstance().getOggettiList());
                     session.setAttribute("NewProdotto", nuovoProdotto);
                 }
-            //manca questo file
-            request.getRequestDispatcher("confermaInserimento.jsp").forward(request, response);
+            
         }
         request.getRequestDispatcher("venditore.jsp").forward(request, response);
 

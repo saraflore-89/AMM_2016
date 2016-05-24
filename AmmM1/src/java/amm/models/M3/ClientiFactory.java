@@ -5,7 +5,13 @@
  */
 package amm.models.M3;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Sara
@@ -14,55 +20,58 @@ public class ClientiFactory {
     
      /* Attributi */
     private static ClientiFactory singleton;
+    private String connectionString;
+    
     public static ClientiFactory getInstance() {
         if (singleton == null) {
             singleton = new ClientiFactory();
         }
         return singleton;
     }
-
-    /* Attributo che sarà richiamato nel costruttore */
-    private ArrayList<Clienti> listaClienti = new ArrayList<Clienti>();
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+            return this.connectionString;
+    }
     
     /* Costruttore */
     private ClientiFactory(){
-    
-        /* Cliente 1 */
-        Clienti c1 = new Clienti();             //creo un cliente
-        c1.setUserCliente("Black77");     //aggiungo gli attributi
-        c1.setPswCliente("98765");
-        c1.setIdCliente(11);
-        c1.setIdContoCliente(99);
-        listaClienti.add(c1);                // lo aggiungo alla lista
-         
-        /* Cliente 2 */
-        Clienti c2 = new Clienti();             //creo un cliente
-        c2.setUserCliente("Anna88");       //aggiungo gli attributi
-        c2.setPswCliente("giggetto");
-        c2.setIdCliente(30);
-        c2.setIdContoCliente(140);
-        listaClienti.add(c2);                // lo aggiungo alla lista
-    
     }
     
     /* Metodi */
-    
-    /* Restituisce la lista di tutti i clienti */
-    public ArrayList<Clienti> getClientiList()
+    public Clienti getClienti(String user, String password)
     {
-        return listaClienti;
-    }
-    
-    /* Restituisce un determinato cliente tramite il suo id, che è univoco */
-    public Clienti getClienti(int idCliente)
-    {
-        for(Clienti u : listaClienti)
-        {
-            if(u.idCliente == idCliente)
-                return u;
-        }
+        try {
+            
+            Connection conn = DriverManager.getConnection(connectionString, "saraflore", "1234");
+            //Definizione query
+            String query = "select * from cliente where "
+                + "user = ? and password = ?";
+            //Creazione statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano valori e posizioni 
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+            ResultSet res = stmt.executeQuery();
+            //Effettua un ciclo sulle righe restituite
+            if(res.next())
+            {
+                Clienti cliente = new Clienti();
+                cliente.setUserCliente(res.getString("user"));
+                cliente.setPswCliente(res.getString("password"));
+                
+                stmt.close();
+                conn.close();
+                return cliente;
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(ClientiFactory.class.getName()).log(Level.SEVERE, null, ex);
+          }
         return null;
     }
-
+    
+    
     
 }
