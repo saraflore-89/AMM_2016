@@ -5,11 +5,8 @@
  */
 package amm.M3;
 
-import amm.models.M3.Venditori;
-import amm.models.M3.SaldoConto;
-import amm.models.M3.SaldoContoFactory;
-import amm.models.M3.OggettiVendita;
-import amm.models.M3.OggettiVenditaFactory;
+import amm.models.M3.Clienti;
+import amm.models.M3.ClientiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -25,7 +22,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "Buyer", urlPatterns = {"/cliente.html"})
 public class Buyer extends HttpServlet {
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,16 +36,25 @@ public class Buyer extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(true);
         
-        if(session.getAttribute("loggedIn").equals(true) &&
-           session.getAttribute("logCliente").equals(true)){
-            //esiste una sessione di un cliente
-            int idOggetto = Integer.parseInt(request.getParameter("idOggetto"));
-            OggettiVendita oggetto = OggettiVenditaFactory.getInstance().getOggetto(idOggetto);
-            request.setAttribute("oggetto", OggettiVenditaFactory.getInstance().getOggetto(idOggetto));
-            
-            }
+         //Controllo se l'autenticazione è corretta
+        if (request.getParameter("submit") != null) {
+            String user = request.getParameter("user");
+            String password = request.getParameter("password");
+
+            //Controllo che sia un cliente
+            Clienti c = ClientiFactory.getInstance().getClienti(user, password);
+                 if(c.getUserCliente().equals(user) && 
+                        c.getPswCliente().equals(password)) {
+                     
+                      session.setAttribute("loggedIn", true);
+                      session.setAttribute("id", c.getIdCliente());
+                 }
+                    request.setAttribute("cliente", c);
+                    request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                 }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

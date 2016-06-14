@@ -31,6 +31,10 @@ and open the template in the editor.
             <a href="login.html">Login</a>
         </nav>
         
+        <!-- Tasto Ricerca -->
+        <label for="ricerca"> Filtra </label>
+        <input id="ricerca" size="30"/>
+        
         <h1>Elenco prodotti acquistabili</h1>
         <!--Creo la tabella dei prodotti -->
         <table>

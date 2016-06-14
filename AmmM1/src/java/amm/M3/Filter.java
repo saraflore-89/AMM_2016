@@ -5,27 +5,24 @@
  */
 package amm.M3;
 
-import amm.models.M3.Venditori;
-import amm.models.M3.VenditoriFactory;
+import amm.models.M3.OggettiVendita;
+import amm.models.M3.OggettiVenditaFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.util.ArrayList;
 
 /**
  *
  * @author Sara
  */
-@WebServlet(name = "Seller", urlPatterns = {"/venditore.html"})
-public class Seller extends HttpServlet {
+@WebServlet(name = "Filter", urlPatterns = {"/Filter"})
+public class Filter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,30 +35,41 @@ public class Seller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(true);
         
-        //Controllo se l'autenticazione è corretta
-        if (request.getParameter("submit") != null) {
-            String user = request.getParameter("user");
+        //Controlla se si sono autenticati in modo esatto
+        if (request.getParameter("Submit") != null) {
+            String username = request.getParameter("username");
             String password = request.getParameter("password");
-
-            //Controllo che sia un cliente
-            Venditori v = VenditoriFactory.getInstance().getVenditore(user, password);
-                 if(v.getUserVenditore().equals(user) && 
-                        v.getPswVenditore().equals(password)) {
-                     
-                      session.setAttribute("loggedIn", true);
-                      session.setAttribute("id", v.getIdVenditore());
-                 }
-                    request.setAttribute("venditore", v);
-                    request.getRequestDispatcher("venditore.jsp").forward(request, response);
-                 }
-        
+            
+        //Controlla se è stato inviato un commando
+        String command = request.getParameter("cmd");
+        if (command != null) 
+        {
+            //Verifica che commando e id siano stati impostati
+            if (command.equals("search") && request.getParameter("q")!=null) 
+            {
+               
+                //Esegue la ricerca
+                ArrayList <OggettiVendita> listaOggetti = OggettiVenditaFactory.getInstance()
+                        .getRecuperaOggetto(request.getParameter("q"));
+                //Imposto la lista come attributo della request
+                request.setAttribute("listaOggetti", listaOggetti);
+                
+                //Quando si restituisce del json è importante segnalarlo ed evitare il caching
+                response.setContentType("application/json");
+                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                response.setHeader("Cache-Control", "no-store, no-cache, "
+                        + "must-revalidate");
+                //Genero il json con una jsp
+                request.getRequestDispatcher("filter.jsp").
+                        forward(request, response);
+            }
+        }
     }
-
-    
+       
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

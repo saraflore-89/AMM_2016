@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author Sara
  */
 public class ClientiFactory {
-    
+   
      /* Attributi */
     private static ClientiFactory singleton;
     private String connectionString;
